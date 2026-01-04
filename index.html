@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lista de Games Zerados</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      font-size: 32px;
+      font-weight: bold;
+      background-color: #222;
+      color: #fff;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 60px;
+      flex-wrap: wrap; /* Permite que os itens quebrem a linha */
+      max-width: 800px; /* Limita a largura para forçar o quarto botão a descer */
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .card {
+      width: 220px;
+      height: 160px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .playstation { border: 4px solid #1e4cff; color: #1e4cff; background-color: #e8ecff; }
+    .xbox { border: 4px solid #1faa00; color: #1faa00; background-color: #e9ffe8; }
+    .steam { border: 4px solid #8b2fc9; color: #8b2fc9; background-color: #f3e8ff; }
+    
+    /* Estilo do botão Todos */
+    .todos {
+      border: 4px solid #333;
+      color: #333;
+      background-color: #ddd;
+      width: 480px; /* Faz ele ser mais largo para destacar embaixo */
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 80px;
+      color: #777;
+    }
+    button.voltar {
+  cursor: pointer;
+  background: #222;
+  transition: background 0.3s;
+}
+
+button.voltar:hover {
+  background: #444;
+  border-color: #1e4cff;
+}
+  </style>
+</head>
+<body>
+
+  <header>LISTA DE GAMES</header>
+
+  <div class="container">
+    <div class="card playstation">PlayStation</div>
+    <div class="card xbox">Xbox</div>
+    <div class="card steam">Steam</div>
+    <div class="card todos">Todos os Jogos</div>
+  </div>
+
+  <footer>
+    © 2026 - Meus Jogos Zerados
+  </footer>
+
+  <script>
+    document.querySelector('.playstation').onclick = () => window.location.href = 'playstation.html';
+    document.querySelector('.xbox').onclick = () => window.location.href = 'xbox.html';
+    document.querySelector('.steam').onclick = () => window.location.href = 'steam.html';
+    document.querySelector('.todos').onclick = () => window.location.href = 'todos.html';
+  </script>
+
+</body>
+</html>
