@@ -243,8 +243,27 @@ function ordenarAlfabetico() {
   rows.forEach(row => table.appendChild(row));
 }
 
+  function ordenarPorNota() {
+  const table = document.querySelector("table");
+  const rows = Array.from(table.rows).slice(1);
+
+  rows.sort((a, b) => {
+    const notaA = parseFloat(
+      a.cells[6].innerText.trim().replace(",", ".")
+    );
+    const notaB = parseFloat(
+      b.cells[6].innerText.trim().replace(",", ".")
+    );
+
+    return notaB - notaA; // Maior nota primeiro
+  });
+
+  rows.forEach(row => table.appendChild(row));
+}
+
 </script>
 
 </body>
 </html>
+
 
