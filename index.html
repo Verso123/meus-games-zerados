@@ -19,11 +19,7 @@
       color: #fff;
       padding: 30px;
       letter-spacing: 2px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-
-
-     
-      
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
     }
 
     .container {
@@ -31,33 +27,51 @@
       justify-content: center;
       gap: 40px;
       margin-top: 60px;
-      flex-wrap: wrap; /* Permite que os itens quebrem a linha */
-      max-width: 800px; /* Limita a largura para forçar o quarto botão a descer */
+      flex-wrap: wrap; 
+      max-width: 800px; 
       margin-left: auto;
       margin-right: auto;
     }
 
-    .card {
-      width: 220px;
-      height: 160px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
+   .card {
+  width: 220px;
+  height: 160px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
 
     .card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+}
 
-    .playstation { border: 4px solid #1e4cff; color: #1e4cff; background-color: #e8ecff; }
-    .xbox { border: 4px solid #1faa00; color: #1faa00; background-color: #e9ffe8; }
-    .steam { border: 4px solid #8b2fc9; color: #8b2fc9; background-color: #f3e8ff; }
+
+   .playstation {
+  border: none;
+  color: white;
+  background: linear-gradient(135deg, #1e4cff, #6f8bff);
+}
+
+.xbox {
+  border: none;
+  color: #003300;
+  background: linear-gradient(135deg, #1faa00, #6dff5a);
+}
+
+.steam {
+  border: none;
+  color: white;
+  background: linear-gradient(135deg, #8b2fc9, #d29cff);
+}
+
     
     /* Estilo do botão Todos */
     .todos {
@@ -109,4 +123,5 @@ button.voltar:hover {
 </body>
 
 </html>
+
 
