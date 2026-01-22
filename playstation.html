@@ -3,221 +3,240 @@
 <head>
   <meta charset="UTF-8">
   <title>PlayStation - Jogos Zerados</title>
-  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ===== ESTILO GERAL ===== */
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0f0f0f;
+      color: white;
+    }
+
+    header {
+      background: linear-gradient(90deg, #1e4cff, #3f6cff);
+      padding: 25px;
+      text-align: center;
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    /* ===== BOTÕES ===== */
+    .acoes {
+      margin: 20px;
+    }
+
+    .acoes a,
+    .acoes button {
+      background: #222;
+      color: white;
+      border: 1px solid #555;
+      padding: 8px 14px;
+      margin-right: 8px;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .acoes button:hover,
+    .acoes a:hover {
+      background: #333;
+    }
+
+    /* ===== TABELA ===== */
+    table {
+      width: 95%;
+      margin: auto;
+      border-collapse: collapse;
+    }
+
+    th {
+      background: #111;
+      padding: 12px;
+      border-bottom: 1px solid #333;
+    }
+
+    td {
+      padding: 12px;
+      border-bottom: 1px solid #222;
+      text-align: center;
+    }
+
+    tr {
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    tr:hover {
+      background: #1a1a1a;
+    }
+
+    img {
+      width: 60px;
+      border-radius: 6px;
+    }
+
+    /* ===== MODAL ===== */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: #111;
+      padding: 30px;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 12px;
+      animation: fadeUp 0.4s ease;
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+    }
+
+    .close {
+      float: right;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<header class="bg-playstation">PlayStation</header>
+<header>PlayStation</header>
 
-<div style="margin: 20px;">
-  <a class="voltar" href="index.html" style="margin: 0 10px 0 0;">⬅ Voltar</a>
-  <button class="voltar" onclick="ordenarPlatinas()" style="cursor:pointer; background:#222;">🏆 Por Platina</button>
-  <button class="voltar" onclick="ordenarAlfabetico()" style="cursor:pointer; background:#222;">🔤 Ordem Alfabética</button>
-  <button class="voltar" onclick="ordenarPorNota()" style="cursor:pointer; background:#222;">⭐ Ordenar por Nota</button>
+<!-- ===== AÇÕES ===== -->
+<div class="acoes">
+  <a href="index.html">⬅ Voltar</a>
+  <button onclick="ordenarAlfabetico()">🔤 A–Z</button>
+  <button onclick="ordenarPorNota()">⭐ Nota</button>
+  <button onclick="ordenarPlatinas()">🏆 Platina</button>
 </div>
 
+<!-- ===== TABELA ===== -->
 <table>
   <tr>
     <th>Imagem</th>
     <th>Jogo</th>
     <th>Gênero</th>
-    <th>Plataforma</th>
-    <th>Horas de Jogo</th>
-    <th>Zerado</th>
+    <th>Horas</th>
     <th>Nota</th>
-    <th>Data</th>
     <th>Platina</th>
   </tr>
 
-<tr>
+  <tr onclick="abrirModal('bloodborne')">
     <td><img src="imagens/bloodborne.avif"></td>
     <td>BLOODBORNE</td>
     <td>SOULS LIKE</td>
-    <td>PS4</td>
     <td>30H</td>
-    <td>✔</td>
     <td>7</td>
-    <td>04/10/2023</td>
     <td></td>
   </tr>
 
-  <tr>
-    <td><img src="imagens/DARKSOULS.JPG"></td>
-    <td>DARK SOULS 1</td>
-    <td>SOULS LIKE</td>
-    <td>PS4</td>
-    <td>32,5H</td>
-    <td>✔</td>
-    <td>7</td>
-    <td>13/10/2023</td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <td><img src="imagens/DETROID.JPG"></td>
-    <td>DETROIT: BECOME HUMAN</td>
-    <td>AÇÃO/ADVENTURE</td>
-    <td>PS4</td>
-    <td>12H</td>
-    <td>✔</td>
-    <td>7,5</td>
-    <td>11/09/2019</td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <td><img src="imagens/final fantasy 7.jpg"></td>
-    <td>FINAL FANTASY VII</td>
-    <td>AÇÃO/ADVENTURE</td>
-    <td>PS4</td>
-    <td>48H</td>
-    <td>✔</td>
-    <td>8</td>
-    <td>29/06/2023</td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <td><img src="imagens/ffxv.jpg"></td>
-    <td>FINAL FANTASY XV</td>
-    <td>AÇÃO/ADVENTURE</td>
-    <td>PS4</td>
-    <td>30H</td>
-    <td>✔</td>
-    <td>6</td>
-    <td>05/07/2023</td>
-    <td></td>
-  </tr>
-
-  <tr>
+  <tr onclick="abrirModal('ghost')">
     <td><img src="imagens/ghost.jpg"></td>
     <td>GHOST OF TSUSHIMA</td>
-    <td>AÇÃO/ADVENTURE</td>
-    <td>PS4</td>
+    <td>AÇÃO / AVENTURA</td>
     <td>27H</td>
-    <td>✔</td>
     <td>9</td>
-    <td>03/07/2022</td>
     <td>100%</td>
   </tr>
 
-  <tr>
+  <tr onclick="abrirModal('gow')">
     <td><img src="imagens/god2018.jpg"></td>
-    <td>GOD OF WAR 2018</td>
-    <td>AÇÃO/ADVENTURE</td>
-    <td>PS4</td>
+    <td>GOD OF WAR (2018)</td>
+    <td>AÇÃO / AVENTURA</td>
     <td>25H</td>
-    <td>✔</td>
     <td>9</td>
-    <td>29/09/2022</td>
     <td>100%</td>
-  </tr>
-
-  <tr>
-    <td><img src="imagens/god-of-war-ragnarok.jpg"></td>
-    <td>GOD OF WAR RAGNAROK</td>
-    <td>AÇÃO/ADVENTURE</td>
-    <td>PS4</td>
-    <td>35H</td>
-    <td>✔</td>
-    <td>7,5</td>
-    <td>01/12/2022</td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <td><img src="imagens/spider-man.jpg"></td>
-    <td>SPIDER-MAN</td>
-    <td>ADVENTURE</td>
-    <td>PS4</td>
-    <td>38H</td>
-    <td>✔</td>
-    <td>9</td>
-    <td>12/10/2018</td>
-    <td>100%</td>
-  </tr>
-
-  <tr>
-    <td><img src="imagens/stray.jpg"></td>
-    <td>STRAY</td>
-    <td>ADVENTURE</td>
-    <td>PS4</td>
-    <td>10H</td>
-    <td>✔</td>
-    <td>8</td>
-    <td>25/07/2022</td>
-    <td>100%</td>
-  </tr>
-
-  <tr>
-    <td><img src="imagens/sw fallen.jpg"></td>
-    <td>SW JEDI FALLEN ORDER</td>
-    <td>AÇÃO/ADVENTURE</td>
-    <td>PS4</td>
-    <td>27H</td>
-    <td>✔</td>
-    <td>7</td>
-    <td>28/01/2020</td>
-    <td>100%</td>
-  </tr>
-
-  <tr>
-    <td><img src="imagens/thelats2.jpg"></td>
-    <td>THE LAST OF US 2</td>
-    <td>ADVENTURE</td>
-    <td>PS4</td>
-    <td>27H</td>
-    <td>✔</td>
-    <td>8</td>
-    <td>05/08/2023</td>
-    <td></td>
   </tr>
 </table>
+
+<!-- ===== MODAL ===== -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="fecharModal()">×</span>
+
+    <h2 id="modalTitulo"></h2>
+    <p id="modalTexto"></p>
+  </div>
+</div>
+
+<!-- ===== JAVASCRIPT ===== -->
 <script>
+  /* ===== AVALIAÇÕES ===== */
+  const reviews = {
+    bloodborne: {
+      titulo: "Bloodborne",
+      texto: "Atmosfera incrível, combate rápido e um dos melhores souls já feitos."
+    },
+    ghost: {
+      titulo: "Ghost of Tsushima",
+      texto: "Visual absurdo, combate fluido e mundo aberto muito imersivo."
+    },
+    gow: {
+      titulo: "God of War (2018)",
+      texto: "Narrativa emocionante, trilha sonora impecável e evolução perfeita do Kratos."
+    }
+  };
 
-// Função para ordenar por Platina (já tínhamos feito)
-function ordenarPlatinas() {
-  const table = document.querySelector("table");
-  const rows = Array.from(table.rows).slice(1);
+  /* ===== MODAL ===== */
+  function abrirModal(jogo) {
+    document.getElementById("modalTitulo").innerText = reviews[jogo].titulo;
+    document.getElementById("modalTexto").innerText = reviews[jogo].texto;
+    document.getElementById("modal").style.display = "flex";
+  }
 
-  rows.sort((a, b) => {
-    const platinaA = a.cells[a.cells.length - 1].innerText.trim();
-    const platinaB = b.cells[b.cells.length - 1].innerText.trim();
+  function fecharModal() {
+    document.getElementById("modal").style.display = "none";
+  }
 
-    if (platinaA !== "" && platinaB === "") return -1;
-    if (platinaA === "" && platinaB !== "") return 1;
-    return 0;
-  });
-
-  rows.forEach(row => table.appendChild(row));
-}
-
-// NOVA FUNÇÃO: Ordenar por Ordem Alfabética (A-Z)
-function ordenarAlfabetico() {
-  const table = document.querySelector("table");
-  const rows = Array.from(table.rows).slice(1);
-
-  rows.sort((a, b) => {
-    const nomeA = a.cells[1].innerText.trim().toUpperCase(); // Coluna 1 é o nome do Jogo
-    const nomeB = b.cells[1].innerText.trim().toUpperCase();
-
-    return nomeA.localeCompare(nomeB);
-  });
-
-  rows.forEach(row => table.appendChild(row));
-}
+  /* ===== ORDENAÇÕES ===== */
+  function ordenarAlfabetico() {
+    ordenar((a, b) =>
+      a.cells[1].innerText.localeCompare(b.cells[1].innerText)
+    );
+  }
 
   function ordenarPorNota() {
-  const table = document.querySelector("table");
-  const rows = Array.from(table.rows).slice(1);
+    ordenar((a, b) =>
+      parseFloat(b.cells[4].innerText) - parseFloat(a.cells[4].innerText)
+    );
+  }
 
-  rows.sort((a, b) => {
-    const notaA = parseFloat(
-      a.cells[6].innerText.trim().replace(",", ".")
+  function ordenarPlatinas() {
+    ordenar((a, b) =>
+      b.cells[5].innerText.length - a.cells[5].innerText.length
     );
-    const notaB = parseFloat(
-      b.cells[6].innerText.trim().replace(",", ".")
-    );
+  }
+
+  function ordenar(funcao) {
+    const table = document.querySelector("table");
+    const rows = Array.from(table.rows).slice(1);
+    rows.sort(funcao);
+    rows.forEach(row => table.appendChild(row));
+  }
+</script>
+
+</body>
+</html>
 
     return notaB - notaA; // Maior nota primeiro
   });
@@ -229,6 +248,7 @@ function ordenarAlfabetico() {
 
 </body>
 </html>
+
 
 
 
