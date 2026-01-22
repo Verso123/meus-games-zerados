@@ -5,7 +5,6 @@
   <title>PlayStation - Jogos Zerados</title>
 
   <style>
-    /* ===== ESTILO GERAL ===== */
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
@@ -21,7 +20,6 @@
       font-weight: bold;
     }
 
-    /* ===== BOTÕES ===== */
     .acoes {
       margin: 20px;
     }
@@ -42,7 +40,6 @@
       background: #333;
     }
 
-    /* ===== TABELA ===== */
     table {
       width: 95%;
       margin: auto;
@@ -60,6 +57,131 @@
       border-bottom: 1px solid #222;
       text-align: center;
     }
+
+    tr {
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    tr:hover {
+      background: #1a1a1a;
+    }
+
+    img {
+      width: 60px;
+      border-radius: 6px;
+    }
+
+    /* ===== COMENTÁRIO ===== */
+    #comentario {
+      width: 95%;
+      margin: 20px auto;
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 15px;
+      display: none;
+      animation: fadeDown 0.3s ease;
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>PlayStation</header>
+
+<div class="acoes">
+  <a href="index.html">⬅ Voltar</a>
+  <button onclick="ordenarAlfabetico()">🔤 A–Z</button>
+  <button onclick="ordenarPorNota()">⭐ Nota</button>
+  <button onclick="ordenarPlatinas()">🏆 Platina</button>
+</div>
+
+<table>
+  <tr>
+    <th>Imagem</th>
+    <th>Jogo</th>
+    <th>Gênero</th>
+    <th>Horas</th>
+    <th>Nota</th>
+    <th>Platina</th>
+  </tr>
+
+  <tr onclick="mostrarComentario('bloodborne')">
+    <td><img src="imagens/bloodborne.avif"></td>
+    <td>BLOODBORNE</td>
+    <td>SOULS LIKE</td>
+    <td>30H</td>
+    <td>7</td>
+    <td></td>
+  </tr>
+
+  <tr onclick="mostrarComentario('ghost')">
+    <td><img src="imagens/ghost.jpg"></td>
+    <td>GHOST OF TSUSHIMA</td>
+    <td>AÇÃO / AVENTURA</td>
+    <td>27H</td>
+    <td>9</td>
+    <td>100%</td>
+  </tr>
+
+  <tr onclick="mostrarComentario('gow')">
+    <td><img src="imagens/god2018.jpg"></td>
+    <td>GOD OF WAR (2018)</td>
+    <td>AÇÃO / AVENTURA</td>
+    <td>25H</td>
+    <td>9</td>
+    <td>100%</td>
+  </tr>
+</table>
+
+<!-- DIV PARA COMENTÁRIO -->
+<div id="comentario"></div>
+
+<script>
+  // Avaliações/Resenhas
+  const reviews = {
+    bloodborne: "Atmosfera incrível, combate rápido e um dos melhores souls já feitos.",
+    ghost: "Visual absurdo, combate fluido e mundo aberto muito imersivo.",
+    gow: "Narrativa emocionante, trilha sonora impecável e evolução perfeita do Kratos."
+  };
+
+  function mostrarComentario(jogo) {
+    const div = document.getElementById('comentario');
+    div.style.display = 'block';
+    div.innerHTML = `<strong>${jogo.toUpperCase()}:</strong> ${reviews[jogo]}`;
+    // opcional: rolar a página para o comentário
+    div.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Funções de ordenação
+  function ordenarAlfabetico() {
+    ordenar((a, b) => a.cells[1].innerText.localeCompare(b.cells[1].innerText));
+  }
+
+  function ordenarPorNota() {
+    ordenar((a, b) => parseFloat(b.cells[4].innerText) - parseFloat(a.cells[4].innerText));
+  }
+
+  function ordenarPlatinas() {
+    ordenar((a, b) => b.cells[5].innerText.length - a.cells[5].innerText.length);
+  }
+
+  function ordenar(funcao) {
+    const table = document.querySelector("table");
+    const rows = Array.from(table.rows).slice(1);
+    rows.sort(funcao);
+    rows.forEach(row => table.appendChild(row));
+  }
+</script>
+
+</body>
+</html>
 
     tr {
       cursor: pointer;
@@ -248,6 +370,7 @@
 
 </body>
 </html>
+
 
 
 
