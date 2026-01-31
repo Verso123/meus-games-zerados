@@ -5,19 +5,98 @@
   <title>Steam - Jogos Zerados</title>
   <link rel="stylesheet" href="style.css">
 </head>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0f0f0f;
+    color: white;
+  }
+
+  header {
+    background: linear-gradient(90deg, #1e4cff, #3f6cff);
+    padding: 25px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  .acoes {
+    margin: 20px;
+  }
+
+  .acoes a,
+  .acoes button {
+    background: #222;
+    color: white;
+    border: 1px solid #555;
+    padding: 8px 14px;
+    margin-right: 8px;
+    cursor: pointer;
+    border-radius: 6px;
+  }
+
+  .acoes button:hover,
+  .acoes a:hover {
+    background: #333;
+  }
+
+  table {
+    width: 95%;
+    margin: auto;
+    border-collapse: collapse;
+  }
+
+  th {
+    background: #111;
+    padding: 12px;
+    border-bottom: 1px solid #333;
+  }
+
+  td {
+    padding: 12px;
+    border-bottom: 1px solid #222;
+    text-align: center;
+  }
+
+  tr {
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  tr:hover {
+    background: #1a1a1a;
+  }
+
+  img {
+    width: 60px;
+    border-radius: 6px;
+  }
+
+  /* estilo do comentário dentro da tabela */
+  .comentario {
+    background: #111;
+    color: #fff;
+    font-style: italic;
+    text-align: left;
+    padding: 10px;
+  }
+
+</style>
+</head>
 <body>
 
-<header class="bg-steam">Steam</header>
+<header>PlayStation</header>
 
-<div style="margin: 20px;">
-  <a class="voltar" href="index.html" style="margin: 0 10px 0 0;">⬅ Voltar</a>
-  <button class="voltar" onclick="ordenarPlatinas()" style="cursor:pointer; background:#222;">🏆 Por Platina</button>
-  <button class="voltar" onclick="ordenarAlfabetico()" style="cursor:pointer; background:#222;">🔤 Ordem Alfabética</button>
-  <button class="voltar" onclick="ordenarPorNota()" style="cursor:pointer; background:#222;">⭐ Ordenar por Nota</button>
+<div class="acoes">
+  <a href="index.html">⬅ Voltar</a>
+  <button onclick="ordenarAlfabetico()">🔤 A–Z</button>
+  <button onclick="ordenarPorNota()">⭐ Nota</button>
+  <button onclick="ordenarPlatinas()">🏆 Platina</button>
 </div>
 
-<table>
-  <tr>
+<table id="tabelaJogos">
+<tr>
     <th>Imagem</th>
     <th>Jogo</th>
     <th>Gênero</th>
@@ -28,7 +107,6 @@
     <th>Data</th>
     <th>Platina</th>
   </tr>
-
 <tr>
     <td><img src="imagens/gta3.jpg"></td>
   <td>GTA 3</td>
@@ -278,6 +356,7 @@ function ordenarAlfabetico() {
 
 </body>
 </html>
+
 
 
 
