@@ -526,59 +526,79 @@
 <script>
 
 // Função para ordenar por Platina (já tínhamos feito)
-function ordenarPlatinas() {
-  const table = document.querySelector("table");
-  const rows = Array.from(table.rows).slice(1);
+const reviews = {
+   'tlou2': `Atmosfera incrível, combate foi aprimorado Acomparado ao primeiro ficou incrivel,Pra mim foi uns dos melhores jogos que já joguei 
+    sendo melhor que o primeiro pra mim questão de historia e combate por isto esta nota.`,
+   'SW FALLEN': `Para quem gosta do universo de star wars esse jogo é um presente pros fãs, atimosfera que faz voce viver no mundo do Star wars 
+    pra mim o melhor jogo de Star wars que já joguei.`,
+    'stray': `este jogo para mim é um dos idies já feitos basicamente faz voce ter uma vida de um gato que explora um mundo desconhecido e bastante instrigante 
+    que gostei muito com certeza vale a pena jogar.`,
+    'SPIDER-MAN': `Simplesmente melhor jogo de heroi que já joguei, gameplay se balançando pela teia pela cidade e ocombate nem se fala simplesmente incrivei 
+    não tenho mais o que falar do jogo simplemente nota 10, fiz a platina e foi muito tranquilo. `,
+    'RESIDENT EVIL 4 REMAKE': `Atmosfera incrível,pra quem ama o classico acho que foi muito bem feito e com amor este remake, combate melhorado ficando bem mais rápido, 
+    para mim o melhor remake da capcom já feito.`,
+    'GOD OF WAR RAGNAROK': `Uma conclusão épica para a saga de Kratos e Atreus! final da despedida deles sempre faz lembrar por que esse jogo foi tão bom mas a luta final e asgard não gostei de como a A história é emocionante, cheia de reviravoltas, e cada personagem é ainda mais profundo. O combate foi 
+    aprimorado em relação ao jogo anterior, com novos ataques, armas e inimigos desafiadores.`,
 
-  rows.sort((a, b) => {
-    const platinaA = a.cells[a.cells.length - 1].innerText.trim();
-    const platinaB = b.cells[b.cells.length - 1].innerText.trim();
 
-    if (platinaA !== "" && platinaB === "") return -1;
-    if (platinaA === "" && platinaB !== "") return 1;
-    return 0;
-  });
 
-  rows.forEach(row => table.appendChild(row));
-}
 
-// NOVA FUNÇÃO: Ordenar por Ordem Alfabética (A-Z)
-function ordenarAlfabetico() {
-  const table = document.querySelector("table");
-  const rows = Array.from(table.rows).slice(1);
 
-  rows.sort((a, b) => {
-    const nomeA = a.cells[1].innerText.trim().toUpperCase(); // Coluna 1 é o nome do Jogo
-    const nomeB = b.cells[1].innerText.trim().toUpperCase();
 
-    return nomeA.localeCompare(nomeB);
-  });
 
-  rows.forEach(row => table.appendChild(row));
-}
+  };
+
+  function mostrarComentario(tr, jogo) {
+    const tabela = document.getElementById('tabelaJogos');
+
+    // Se já existir um comentário abaixo desta linha, remove
+    const proximo = tr.nextElementSibling;
+    if (proximo && proximo.classList.contains('comentario')) {
+      proximo.remove();
+      return; // alterna ao clicar novamente
+    }
+
+    // Remove comentários de outras linhas
+    const comentarios = document.querySelectorAll('.comentario');
+    comentarios.forEach(c => c.remove());
+
+    // Cria nova linha de comentário
+    const trComentario = document.createElement('tr');
+    trComentario.className = 'comentario';
+    const td = document.createElement('td');
+    td.colSpan = 9;
+    td.innerText = reviews[jogo];
+    trComentario.appendChild(td);
+
+    // Insere abaixo da linha clicada
+    tr.parentNode.insertBefore(trComentario, tr.nextSibling);
+  }
+
+  // Funções de ordenação
+  function ordenarAlfabetico() {
+    ordenar((a, b) => a.cells[1].innerText.localeCompare(b.cells[1].innerText));
+  }
 
   function ordenarPorNota() {
-  const table = document.querySelector("table");
-  const rows = Array.from(table.rows).slice(1);
+    ordenar((a, b) => parseFloat(b.cells[4].innerText) - parseFloat(a.cells[4].innerText));
+  }
 
-  rows.sort((a, b) => {
-    const notaA = parseFloat(
-      a.cells[6].innerText.trim().replace(",", ".")
-    );
-    const notaB = parseFloat(
-      b.cells[6].innerText.trim().replace(",", ".")
-    );
+  function ordenarPlatinas() {
+    ordenar((a, b) => b.cells[5].innerText.length - a.cells[5].innerText.length);
+  }
 
-    return notaB - notaA; // Maior nota primeiro
-  });
-
-  rows.forEach(row => table.appendChild(row));
-}
+  function ordenar(funcao) {
+    const table = document.getElementById("tabelaJogos");
+    const rows = Array.from(table.rows).slice(1).filter(r => !r.classList.contains('comentario'));
+    rows.sort(funcao);
+    rows.forEach(row => table.appendChild(row));
+  }
 
 </script>
 
 </body>
 </html>
+
 
 
 
