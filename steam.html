@@ -81,7 +81,7 @@
     color: #fff;
     font-style: italic;
     text-align: left;
-    padding: 10px;
+    padding: 26px;
   }
 
 </style>
@@ -109,7 +109,7 @@
     <th>Data</th>
     <th>Platina</th>
   </tr>
-<tr>
+<tr onclick="mostrarComentario(this, 'GTA 3')"> 
     <td><img src="imagens/gta3.jpg"></td>
   <td>GTA 3</td>
   <td>MUNDO ABERTO</td>
@@ -121,7 +121,7 @@
   <td>100%</td>
 </tr>
 
-<tr>
+<tr onclick="mostrarComentario(this, 'HOLLOW KNIGHT')"> 
     <td><img src="imagens/hollow.jpg"></td>
   <td>HOLLOW KNIGHT</td>
   <td>METROIDVANIA</td>
@@ -133,7 +133,7 @@
   <td></td>
 </tr>
 
-<tr>
+<tr onclick="mostrarComentario(this, 'INSCRYPITON')">
     <td><img src="imagens/insc.jpg"></td>
   <td>INSCRYPITON</td>
   <td>QUEBRA-CABEÇA</td>
@@ -145,7 +145,7 @@
   <td></td>
 </tr>
 
-<tr>
+<tr onclick="mostrarComentario(this, 'LIES OF P')">
     <td><img src="imagens/lies of p.jpg"></td>
   <td>LIES OF P</td>
   <td>SOULS LIKE</td>
@@ -157,7 +157,7 @@
   <td></td>
 </tr>
 
-<tr>
+<tr onclick="mostrarComentario(this, 'NARUTO SHIPPUDEN: STORM 2')">
     <td><img src="imagens/n2.jpg"></td>
   <td>NARUTO SHIPPUDEN: STORM 2</td>
   <td>ADVENTURE</td>
@@ -169,7 +169,7 @@
   <td></td>
 </tr>
 
-<tr>
+<tr onclick="mostrarComentario(this, 'NARUTO SHIPPUDEN: STORM 3')">
     <td><img src="imagens/n3.jpg"></td>
   <td>NARUTO SHIPPUDEN: STORM 3</td>
   <td>ADVENTURE</td>
@@ -181,7 +181,7 @@
   <td></td>
 </tr>
 
-<tr>
+<tr onclick="mostrarComentario(this, 'NARUTO SHIPPUDEN: STORM 4')">
     <td><img src="imagens/n4.jpg"></td>
   <td>NARUTO SHIPPUDEN: STORM 4</td>
   <td>ADVENTURE</td>
@@ -193,7 +193,7 @@
   <td></td>
 </tr>
 
-<tr>
+<tr onclick="mostrarComentario(this, 'REZIDENTE EVILL 2 REMAKE')">
     <td><img src="imagens/re2.jpg"></td>
   <td>REZIDENTE EVILL 2 REMAKE</td>
   <td>SURVIVAL HORROR</td>
@@ -205,7 +205,7 @@
   <td>100%</td>
 </tr>
 
-<tr>
+<tr onclick="mostrarComentario(this, 'REZIDENTE EVILL 3 REMAKE')">
     <td><img src="imagens/re3.jpg"></td>
   <td>REZIDENTE EVILL 3 REMAKE</td>
   <td>SURVIVAL HORROR</td>
@@ -217,7 +217,7 @@
   <td></td>
 </tr>
 
-<tr>
+<tr onclick="mostrarComentario(this, 'REZIDENTE EVILL 4 ORIGINAL')">
     <td><img src="imagens/re4n.jpg"></td>
   <td>REZIDENTE EVILL 4 ORIGINAL</td>
   <td>SURVIVAL HORROR</td>
@@ -229,7 +229,7 @@
   <td>100%</td>
 </tr>
 
-<tr>
+<tr onclick="mostrarComentario(this, 'ROAD 96')">
     <td><img src="imagens/road 96.jpg"></td>
   <td>ROAD 96</td>
   <td>ADVENTURE</td>
@@ -241,7 +241,7 @@
   <td>100%</td>
 </tr>
 
-<tr>
+<tr onclick="mostrarComentario(this, 'SPIDER-MAN MILES MORALES')">
     <td><img src="imagens/spider miles.jpg"></td>
   <td>SPIDER-MAN MILES MORALES</td>
   <td>AÇÃO</td>
@@ -253,7 +253,7 @@
   <td>100%</td>
 </tr>
 
-<tr>
+<tr onclick="mostrarComentario(this, 'UNPACKING')">
     <td><img src="imagens/un.jpg"></td>
   <td>UNPACKING</td>
   <td>QUEBRA-CABEÇA</td>
@@ -265,7 +265,7 @@
   <td>100%</td>
 </tr>
 
-<tr>
+<tr onclick="mostrarComentario(this, 'Watch_Dogs® 2')">
     <td><img src="imagens/wd2.jpg"></td>
   <td>Watch_Dogs® 2</td>
   <td>ADVENTURE</td>
@@ -277,7 +277,7 @@
   <td>100%</td>
 </tr>
 
-  <tr>
+ <tr onclick="mostrarComentario(this, 'FAR CRY 3')">
     <td><img src="imagens/fracry3.jpg"></td>
     <td>FAR CRY 3</td>
     <td>AÇÃO/ADVENTURE</td>
@@ -289,7 +289,7 @@
     <td>100%</td>
   </tr>
 
-  <tr>
+ <tr onclick="mostrarComentario(this, 'RESIDENT EVIL 4 REMAKE')">
     <td><img src="imagens/leon.jpg"></td>
     <td>RESIDENT EVIL 4 REMAKE</td>
     <td>SURVIVAL HORROR</td>
@@ -306,28 +306,22 @@
 
 // Função para ordenar por Platina (já tínhamos feito)
 const reviews = {
-   'tlou2': `Atmosfera incrível, combate foi aprimorado Acomparado ao primeiro ficou incrivel,Pra mim foi uns dos melhores jogos que já joguei 
-    sendo melhor que o primeiro pra mim questão de historia e combate por isto esta nota.`,
-   'SW FALLEN': `Para quem gosta do universo de star wars esse jogo é um presente pros fãs, atimosfera que faz voce viver no mundo do Star wars 
-    pra mim o melhor jogo de Star wars que já joguei.`,
-    'stray': `Este jogo para mim é um dos idies já feitos basicamente faz voce ter uma vida de um gato que explora um mundo desconhecido e bastante instrigante 
-    que gostei muito com certeza vale a pena jogar.`,
-    'SPIDER-MAN': `Simplesmente melhor jogo de heroi que já joguei, gameplay se balançando pela teia pela cidade e ocombate nem se fala simplesmente incrivei 
-    não tenho mais o que falar do jogo simplemente nota 10, fiz a platina e foi muito tranquilo. `,
-    'RESIDENT EVIL 4 REMAKE': `Atmosfera incrível,pra quem ama o classico acho que foi muito bem feito e com amor este remake, combate melhorado ficando bem mais rápido, 
-    para mim o melhor remake da capcom já feito.`,
-    'GOD OF WAR RAGNAROK': `Uma conclusão épica para a saga de Kratos e Atreus! final da despedida deles sempre faz lembrar por que esse jogo foi tão bom mas a luta final e asgard não gostei de como foi apresentado o final mas tirando isso muito bom o jogo.`,
-    'BLOODBORNE': `Bloodborne é obra-prima: combate rápido, atmosfera sombria e uma lore que te engole sem pedir licença,
-    Poucos jogos conseguem misturar ação frenética e terror cósmico como Bloodborne.`,
-    'DARK SOULS 1': `Á primeira vez explorando Dark Souls 1 é muito boa os bosses eu achei meio faceis sem muita dificuldade passei mais dificulade naquela caverna cheia de esqueletos.`,
-    'DETROIT: BECOME HUMAN': `Esse jogo todas as suas escolhas mudam o rumo da historia de cada um dos 3 personagens e minha decisoes ruins não ajudou muito.`,
-    'FINAL FANTASY VII': `Final Fantasy VII Remake reinventa o combate e retrasforma o clássico deixando a historia mais atrativa e mas emocionante tendo uma narrativa ousada e muita nostalgia.`,
-    'FINAL FANTASY XV':   `Final Fantasy XV aposta em uma jornada emocional de amizade, com mundo aberto bonito e combate em tempo real.`,
-    'GHOST OF TSUSHIMA': `A atmosfera deste gamee é simplemente incrivel se voce quer ser um samurai este jogo é pra voce simplemente historia e combate são muito bem feito.`,
-    'God of war 1': `Este jogo para contando o inicio de porque o kratos se tornou o deus da guerra e por que ele odeio os deus eu acho simplemente incrivel,gameplay nem preciso falar simplesmente muito satisfatorio.`,
-    'GOD OF WAR 2018': `Aqui foi de 0 a 100 literalemte deixou o combate mais moderno um kratos mais maduro e focado gosto bastante desse god of war foi meu primeiro para mim nota 10 o kratos ainda é o kratos não igual o ragnarok.`,
-  
-
+      'GTA 3': `Esse jogo foi muito importante para a história dos games. Mesmo sendo antigo, foi incrível jogar e ver como o mundo aberto funcionava naquela época. Para mim, é um clássico que merece respeito por tudo que influenciou nos jogos de hoje .`,
+      'HOLLOW KNIGHT': `Esse jogo é simplesmente lindo. A atmosfera é incrível, o mapa é gigante e cheio de mistérios. O combate é simples, mas bem desafiador. Foi um jogo que me surpreendeu muito e com certeza é um dos melhores indies que já joguei.`,
+      'INSCRYPITON': `Um jogo totalmente diferente de tudo que eu já joguei. No começo parece só um jogo de cartas, mas a história vai ficando cada vez mais estranha e intrigante. É aquele jogo que te prende pela curiosidade e te deixa pensando muito depois de termin.`,
+      'LIES OF P': `Um soulslike muito bem feito. O combate é desafiador e a ambientação é muito boa. A história inspirada em Pinóquio ficou bem diferente e interessante. Para mim, foi um jogo difícil, mas muito satisfatório de jogar.`,
+      'NARUTO SHIPPUDEN: STORM 2': `Esse jogo é incrível para quem é fã de Naruto. As lutas são muito bem feitas e as batalhas contra os chefes são simplesmente cinema. A história é muito bem adaptada do anime.`,
+      'NARUTO SHIPPUDEN: STORM 3': `Aqui o jogo melhora ainda mais. As batalhas ficam mais épicas e a história avança bastante. As lutas contra os chefes são um dos pontos mais altos do jogo e deixam qualquer fã animado.`,
+      'NARUTO SHIPPUDEN: STORM 4': `Simplesmente o melhor da franquia Storm. O jogo fecha a história de Naruto de forma épica, com lutas absurdas e muito bem feitas. Para mim, é o melhor jogo de Naruto já feito.`,
+      'REZIDENTE EVILL 2 REMAKE': `Esse remake ficou incrível. A atmosfera de terror é muito bem feita e dá tensão do começo ao fim. O jogo consegue misturar medo, exploração e ação na medida certa. Um dos melhores remakes que já joguei.`,
+      'REZIDENTE EVILL 3 REMAKE': `Mais focado em ação do que terror, mas ainda assim muito bom. O ritmo é mais rápido e a história é interessante. Apesar de ser mais curto, é um jogo divertido e bem feito.`,
+      'REZIDENTE EVILL 4 ORIGINAL': `Um clássico absoluto. Esse jogo mudou completamente a franquia Resident Evil. O combate, a câmera e a ação foram algo totalmente novo na época. Para mim, é um dos jogos mais importantes da história.`,
+      'ROAD 96': `Um jogo bem diferente, focado em história e escolhas. Cada viagem é única e você nunca sabe o que vai acontecer. A trilha sonora é muito boa e a narrativa te prende bastante.`,
+      'SPIDER-MAN MILES MORALES': `Um jogo muito divertido. O Miles tem poderes diferentes que deixam o combate ainda mais legal. A história é simples, mas funciona muito bem. Para mim, é um ótimo jogo do Homem-Aranha.`,
+      'UNPACKING': `Um jogo simples e relaxante. Basicamente você vai desempacotando caixas e organizando objetos, mas isso conta uma história sem usar palavras. É um jogo calmo e muito criativo.`,
+      'Watch_Dogs® 2': `Um jogo bem divertido de mundo aberto. A cidade é viva e cheia de coisas pra fazer. As mecânicas de hack são legais e a história é mais descontraída. Para mim, é melhor que o primeiro.`,
+      'FAR CRY 3': `Um dos melhores Far Cry já feitos. O vilão é muito marcante e a história é interessante. O mundo aberto é divertido de explorar e o gameplay é muito viciante.`,
+      'RESIDENT EVIL 4 REMAKE': `Esse remake conseguiu melhorar o que já era perfeito. O combate ficou mais moderno, a atmosfera continua incrível e a história foi muito bem adaptada. Para mim, é um remake feito com muito cuidado e respeito ao original.`,
 
 
 
@@ -381,6 +375,7 @@ const reviews = {
 </script>
 </body>
 </html>
+
 
 
 
