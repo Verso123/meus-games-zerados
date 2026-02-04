@@ -3,142 +3,230 @@
 <head>
   <meta charset="UTF-8" />
   <title>Lista de Games Zerados</title>
+
+  <!-- ÍCONES -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
+    html {
+      font-size: 18px;
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-     background: linear-gradient(180deg, #f4f4f4, #eaeaea);
+      background: linear-gradient(180deg, #111, #1c1c1c);
+      color: white;
+      font-size: 1.3rem;
+      overflow-x: hidden;
+    }
+
+    /* LOADING */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      color: white;
+      font-size: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      letter-spacing: 2px;
     }
 
     header {
       text-align: center;
-      padding: 20px;
-      font-size: 32px;
+      padding: 35px;
+      font-size: 42px;
       font-weight: bold;
-      background-color: #222;
-      color: #fff;
-      padding: 30px;
-      letter-spacing: 2px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+      background: linear-gradient(90deg, #1e4cff, #6f8bff);
+      letter-spacing: 3px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      text-transform: uppercase;
     }
 
     .container {
       display: flex;
       justify-content: center;
       gap: 40px;
-      margin-top: 60px;
-      flex-wrap: wrap; 
-      max-width: 800px; 
+      margin-top: 80px;
+      flex-wrap: wrap;
+      max-width: 900px;
       margin-left: auto;
       margin-right: auto;
     }
 
-   .card {
-  width: 220px;
-  height: 160px;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
+    .card {
+      width: 240px;
+      height: 180px;
+      border-radius: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: fadeUp 0.8s ease forwards;
+      opacity: 0;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+    }
 
-  
-  animation: fadeUp 0.6s ease forwards;
-}
+    /* BRILHO */
+    .card::after {
+      content: "";
+      position: absolute;
+      top: -100%;
+      left: -100%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.2),
+        transparent
+      );
+      transform: rotate(25deg);
+      transition: 0.5s;
+    }
 
+    .card:hover::after {
+      top: 100%;
+      left: 100%;
+    }
 
     .card:hover {
-  transform: translateY(-8px) scale(1.05);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-}
+      transform: translateY(-10px) scale(1.08);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
 
+    .card:active {
+      transform: scale(0.95);
+    }
 
-   .playstation {
-  border: none;
-  color: white;
-  background: linear-gradient(135deg, #1e4cff, #6f8bff);
-}
+    .card i {
+      font-size: 52px;
+      margin-bottom: 10px;
+    }
 
-.xbox {
-  border: none;
-  color: #003300;
-  background: linear-gradient(135deg, #1faa00, #6dff5a);
-}
+    .playstation {
+      background: linear-gradient(135deg, #1e4cff, #6f8bff);
+    }
 
-.steam {
-  border: none;
-  color: white;
-  background: linear-gradient(135deg, #8b2fc9, #d29cff);
-}
+    .xbox {
+      background: linear-gradient(135deg, #1faa00, #6dff5a);
+      color: #003300;
+    }
 
-    
-    /* Estilo do botão Todos */
-   .todos {
-  width: 480px;
-  height: 140px;
-  border: none;
-  color: white;
-  background: linear-gradient(135deg, #333, #555);
-  font-size: 26px;
-  letter-spacing: 1px;
-}
+    .steam {
+      background: linear-gradient(135deg, #8b2fc9, #d29cff);
+    }
+
+    .todos {
+      width: 520px;
+      height: 160px;
+      background: linear-gradient(135deg, #444, #666);
+      font-size: 30px;
+    }
 
     footer {
       text-align: center;
-      margin-top: 80px;
-      color: #777;
+      margin-top: 100px;
+      color: #aaa;
+      font-size: 18px;
     }
-    button.voltar {
-  cursor: pointer;
-  background: #222;
-  transition: background 0.3s;
-}
 
-button.voltar:hover {
-  background: #444;
-  border-color: #1e4cff;
-}
     @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
+    .card:nth-child(1) { animation-delay: 0.2s; }
+    .card:nth-child(2) { animation-delay: 0.4s; }
+    .card:nth-child(3) { animation-delay: 0.6s; }
+    .card:nth-child(4) { animation-delay: 0.8s; }
   </style>
 </head>
+
 <body>
+
+  <!-- LOADING -->
+  <div id="loader">CARREGANDO...</div>
 
   <header>LISTA DE GAMES</header>
 
   <div class="container">
-    <div class="card playstation">PlayStation</div>
-    <div class="card xbox">Xbox</div>
-    <div class="card steam">Steam</div>
-    <div class="card todos">Todos os Jogos</div>
+    <div class="card playstation">
+      <i class="fa-brands fa-playstation"></i>
+      PlayStation
+    </div>
+
+    <div class="card xbox">
+      <i class="fa-brands fa-xbox"></i>
+      Xbox
+    </div>
+
+    <div class="card steam">
+      <i class="fa-brands fa-steam"></i>
+      Steam
+    </div>
+
+    <div class="card todos">
+      <i class="fa-solid fa-gamepad"></i>
+      Todos os Jogos
+    </div>
   </div>
 
   <footer>
     © 2026 - Meus Jogos Zerados
   </footer>
 
+  <!-- SOM DE CLIQUE -->
+  <audio id="clickSound" src="https://assets.mixkit.co/sfx/preview/mixkit-game-click-1114.mp3"></audio>
+
   <script>
-    document.querySelector('.playstation').onclick = () => window.location.href = 'playstation.html';
-    document.querySelector('.xbox').onclick = () => window.location.href = 'xbox.html';
-    document.querySelector('.steam').onclick = () => window.location.href = 'steam.html';
-    document.querySelector('.todos').onclick = () => window.location.href = 'todos.html';
+    const clickSound = document.getElementById('clickSound');
+
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', () => {
+        clickSound.play();
+      });
+    });
+
+    document.querySelector('.playstation').onclick = () => setTimeout(() => {
+      window.location.href = 'playstation.html';
+    }, 300);
+
+    document.querySelector('.xbox').onclick = () => setTimeout(() => {
+      window.location.href = 'xbox.html';
+    }, 300);
+
+    document.querySelector('.steam').onclick = () => setTimeout(() => {
+      window.location.href = 'steam.html';
+    }, 300);
+
+    document.querySelector('.todos').onclick = () => setTimeout(() => {
+      window.location.href = 'todos.html';
+    }, 300);
+
+    window.onload = () => {
+      document.getElementById('loader').style.display = 'none';
+    };
   </script>
 
 </body>
-
 </html>
+
 
 
 
