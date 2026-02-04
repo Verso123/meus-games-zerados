@@ -647,56 +647,74 @@ const reviews = {
 
   };
 
-  function mostrarComentario(tr, jogo) {
-    const tabela = document.getElementById('tabelaJogos');
+ function mostrarComentario(tr, jogo) {
+  const tabela = document.getElementById('tabelaJogos');
 
-    // Se já existir um comentário abaixo desta linha, remove
-    const proximo = tr.nextElementSibling;
-    if (proximo && proximo.classList.contains('comentario')) {
-      proximo.remove();
-      return; // alterna ao clicar novamente
-    }
-
-    // Remove comentários de outras linhas
-    const comentarios = document.querySelectorAll('.comentario');
-    comentarios.forEach(c => c.remove());
-
-    // Cria nova linha de comentário
-    const trComentario = document.createElement('tr');
-    trComentario.className = 'comentario';
-    const td = document.createElement('td');
-    td.colSpan = 9;
-    td.innerText = reviews[jogo];
-    trComentario.appendChild(td);
-
-    // Insere abaixo da linha clicada
-    tr.parentNode.insertBefore(trComentario, tr.nextSibling);
+  const proximo = tr.nextElementSibling;
+  if (proximo && proximo.classList.contains('comentario')) {
+    proximo.remove();
+    return;
   }
 
-  // Funções de ordenação
-  function ordenarAlfabetico() {
-    ordenar((a, b) => a.cells[1].innerText.localeCompare(b.cells[1].innerText));
-  }
+  document.querySelectorAll('.comentario').forEach(c => c.remove());
 
-  function ordenarPorNota() {
-    ordenar((a, b) => parseFloat(b.cells[4].innerText) - parseFloat(a.cells[4].innerText));
-  }
+  const trComentario = document.createElement('tr');
+  trComentario.className = 'comentario';
 
-  function ordenarPlatinas() {
-    ordenar((a, b) => b.cells[5].innerText.length - a.cells[5].innerText.length);
-  }
+  const td = document.createElement('td');
+  td.colSpan = 9;
+  td.innerText = reviews[jogo] || 'Sem comentário cadastrado.';
 
-  function ordenar(funcao) {
-    const table = document.getElementById("tabelaJogos");
-    const rows = Array.from(table.rows).slice(1).filter(r => !r.classList.contains('comentario'));
-    rows.sort(funcao);
-    rows.forEach(row => table.appendChild(row));
-  }
+  trComentario.appendChild(td);
+  tr.parentNode.insertBefore(trComentario, tr.nextSibling);
+}
 
+/* ===============================
+   FUNÇÕES DE ORDENAÇÃO
+================================ */
+
+// A–Z
+function ordenarAlfabetico() {
+  ordenar((a, b) =>
+    a.cells[1].innerText.localeCompare(b.cells[1].innerText)
+  );
+}
+
+// ⭐ NOTA (corrigido índice + vírgula)
+function ordenarPorNota() {
+  ordenar((a, b) => {
+    const notaA = parseFloat(a.cells[6].innerText.replace(',', '.')) || 0;
+    const notaB = parseFloat(b.cells[6].innerText.replace(',', '.')) || 0;
+    return notaB - notaA;
+  });
+}
+
+// 🏆 PLATINA (corrigido índice)
+function ordenarPlatinas() {
+  ordenar((a, b) => {
+    const platA = a.cells[8].innerText.trim();
+    const platB = b.cells[8].innerText.trim();
+    return platB.length - platA.length;
+  });
+}
+
+/* ===============================
+   FUNÇÃO BASE
+================================ */
+function ordenar(funcao) {
+  const table = document.getElementById("tabelaJogos");
+  const rows = Array.from(table.rows)
+    .slice(1)
+    .filter(r => !r.classList.contains('comentario'));
+
+  rows.sort(funcao);
+  rows.forEach(row => table.appendChild(row));
+}
 </script>
 
 </body>
 </html>
+
 
 
 
