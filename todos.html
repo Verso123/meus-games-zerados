@@ -87,6 +87,11 @@
 <body>
 
 <header>Todos os jogos</header>
+  
+  <div id="contadorJogos" style="margin:20px; font-size:18px;">
+🎮 Jogos Zerados: 0
+</div>
+
 
 <div class="acoes">
   <a href="index.html">⬅ Voltar</a>
@@ -110,7 +115,8 @@
     <option value="longo">40h+</option>
   </select>
 
-  <input type="date" onchange="filtrarData(this.value)">
+  <input type="date" onchange="filtrarData(this.value)"> 
+  
 </div>
 
 
@@ -829,7 +835,30 @@ function ordenar(funcao) {
 
   });
 
+} 
+  function contarJogos() {
+
+  const linhas = document.querySelectorAll("#tabelaJogos tr");
+
+  let total = 0;
+
+  linhas.forEach((linha, i) => {
+
+    if (i === 0 || linha.classList.contains("comentario")) return;
+
+    const zerado = linha.cells[5].innerText;
+
+    if (zerado.includes("✔")) total++;
+
+  });
+
+  document.getElementById("contadorJogos").innerText =
+  "🎮 Jogos Zerados: " + total;
+
 }
+
+window.onload = contarJogos;
+
 
 
 
