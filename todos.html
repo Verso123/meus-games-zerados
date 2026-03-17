@@ -799,58 +799,42 @@ function ordenar(funcao) {
   });
 
 } //horas de gameplay
-  function filtrarHoras(tipo) {
+function ordenarHoras() {
+  ordenar((a, b) => {
 
-  const linhas = document.querySelectorAll("#tabelaJogos tr");
+    let hA = a.cells[4].innerText
+      .replace("H","")
+      .replace(",",".")
+      .replace("m","");
 
-  linhas.forEach((linha, i) => {
+    let hB = b.cells[4].innerText
+      .replace("H","")
+      .replace(",",".")
+      .replace("m","");
 
-    if (i === 0 || linha.classList.contains("comentario")) return;
+    hA = parseFloat(hA) || 0;
+    hB = parseFloat(hB) || 0;
 
-    let horas = linha.cells[4].innerText
-      .replace("H", "")
-      .replace(",", ".")
-      .replace("m", "");
-
-    horas = parseFloat(horas);
-
-    if (tipo === "todas") linha.style.display = "";
-
-    else if (tipo === "curto" && horas <= 10)
-      linha.style.display = "";
-
-    else if (tipo === "medio" && horas > 10 && horas <= 40)
-      linha.style.display = "";
-
-    else if (tipo === "longo" && horas > 40)
-      linha.style.display = "";
-
-    else linha.style.display = "none";
+    return hB - hA;
 
   });
+}
 
-} 
   //Data
-  function filtrarData(ano) {
+  function ordenarData() {
 
-  const linhas = document.querySelectorAll("#tabelaJogos tr");
+  ordenar((a, b) => {
 
-  linhas.forEach((linha, i) => {
+    const dataA = a.cells[7].innerText.split("/").reverse().join("-");
+    const dataB = b.cells[7].innerText.split("/").reverse().join("-");
 
-    if (i === 0 || linha.classList.contains("comentario")) return;
-
-    const data = linha.cells[7].innerText;
-
-    if (ano === "todas" || data.includes(ano)) {
-      linha.style.display = "";
-    } else {
-      linha.style.display = "none";
-    }
+    return new Date(dataB) - new Date(dataA);
 
   });
 
 }
 
+// contar jogos zerados
   function contarJogos() {
 
   const linhas = document.querySelectorAll("#tabelaJogos tr");
