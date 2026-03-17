@@ -21,37 +21,40 @@
     font-weight: bold;
   }
 
-  .acoes {
-  margin: 20px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  .acoes{
+  margin:20px;
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
-/* TODOS OS BOTÕES E SELECT */
+/* BOTÕES, LINKS E SELECTS */
 .acoes a,
 .acoes button,
-.acoes select {
-  background: #1b1b1b;
-  color: white;
-  border: 1px solid #444;
-  padding: 7px 14px;
-  border-radius: 6px;
-  cursor: pointer;
-  text-decoration: none;
-  font-size: 14px;
+.acoes select{
+  background:#1b1b1b;
+  color:white;
+  border:1px solid #444;
+  padding:0 14px;
+  height:36px;           /* mesma altura */
+  border-radius:6px;
+  cursor:pointer;
+  text-decoration:none;
+  font-size:14px;
+  display:flex;
+  align-items:center;
 }
 
-/* HOVER */
+/* hover */
 .acoes a:hover,
 .acoes button:hover,
-.acoes select:hover {
-  background: #2a2a2a;
+.acoes select:hover{
+  background:#2a2a2a;
 }
 
 /* remove estilo padrão do select */
-.acoes select {
-  appearance: none;
+.acoes select{
+  appearance:none;
 }
 
 
