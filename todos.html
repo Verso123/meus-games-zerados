@@ -800,24 +800,31 @@ function ordenar(funcao) {
 
 } //horas de gameplay
 function ordenarHoras() {
+
   ordenar((a, b) => {
 
-    let hA = a.cells[4].innerText
-      .replace("H","")
-      .replace(",",".")
-      .replace("m","");
+    function pegarHoras(valor) {
 
-    let hB = b.cells[4].innerText
-      .replace("H","")
-      .replace(",",".")
-      .replace("m","");
+      valor = valor.toLowerCase();
 
-    hA = parseFloat(hA) || 0;
-    hB = parseFloat(hB) || 0;
+      if (valor.includes("m")) {
+        return parseFloat(valor.replace("m","")) / 60;
+      }
 
-    return hB - hA;
+      valor = valor.replace("h","")
+                   .replace(",",".")
+                   .replace(/[^\d.]/g,"");
+
+      return parseFloat(valor) || 0;
+    }
+
+    const hA = pegarHoras(a.cells[4].innerText);
+    const hB = pegarHoras(b.cells[4].innerText);
+
+    return hB - hA; // maior primeiro
 
   });
+
 }
 
   //Data
