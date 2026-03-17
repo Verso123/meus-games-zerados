@@ -114,20 +114,20 @@
 <button onclick="ordenarPorNota()">⭐ Nota</button>
 <button onclick="ordenarPlatinas()">🏆 Platina</button>
   
-<button onclick="ordenarHoras()">⏱ Horas</button>
-
-<select id="ordemHoras" onchange="ordenarHoras()">
-<option value="maior">Maior → Menor</option>
-<option value="menor">Menor → Maior</option>
-</select>
 
 
-  
-<button onclick="ordenarData()">📅 Data</button>
-<select id="ordemData" onchange="ordenarData()">
-<option value="recente">Mais recente</option>
-<option value="antigo">Mais antigo</option>
-</select>
+<button onclick="toggleHoras()">⏱ Horas</button>
+<div id="menuHoras" style="display:none;">
+  <button onclick="ordenarHoras('maior')">Maior → Menor</button>
+  <button onclick="ordenarHoras('menor')">Menor → Maior</button>
+</div>
+
+<button onclick="toggleData()">📅 Data</button>
+<div id="menuData" style="display:none;">
+  <button onclick="ordenarData('recente')">Mais recente</button>
+  <button onclick="ordenarData('antigo')">Mais antigo</button>
+</div>
+
 
 <select onchange="filtrarPlataforma(this.value)">
 <option value="todas">🎮 Plataforma</option>
@@ -794,9 +794,7 @@ function ordenar(funcao) {
   });
 
 } //horas de gameplay
-function ordenarHoras() {
-
-  const ordem = document.getElementById("ordemHoras").value;
+function ordenarHoras(ordem) {
 
   ordenar((a, b) => {
 
@@ -818,35 +816,41 @@ function ordenarHoras() {
     const hA = pegarHoras(a.cells[4].innerText);
     const hB = pegarHoras(b.cells[4].innerText);
 
-    if (ordem === "maior") {
-      return hB - hA;
-    } else {
-      return hA - hB;
-    }
+    return ordem === "maior" ? hB - hA : hA - hB;
 
   });
 
 }
 
 
-  //Data
-  function ordenarData() {
+function toggleHoras() {
+  const menu = document.getElementById("menuHoras");
 
-  const ordem = document.getElementById("ordemData").value;
+  menu.style.display = menu.style.display === "none" ? "block" : "none";
+}
+
+function toggleData() {
+  const menu = document.getElementById("menuData");
+
+  menu.style.display = menu.style.display === "none" ? "block" : "none";
+}
+
+
+
+
+
+  //Data
+  function ordenarData(ordem) {
 
   ordenar((a, b) => {
 
     const dataA = a.cells[7].innerText.split("/");
     const dataB = b.cells[7].innerText.split("/");
 
-    const novaA = new Date(dataA[2], dataA[1] - 1, dataA[0]);
-    const novaB = new Date(dataB[2], dataB[1] - 1, dataB[0]);
+    const novaA = new Date(dataA[2], dataA[1]-1, dataA[0]);
+    const novaB = new Date(dataB[2], dataB[1]-1, dataB[0]);
 
-    if (ordem === "recente") {
-      return novaB - novaA;
-    } else {
-      return novaA - novaB;
-    }
+    return ordem === "recente" ? novaB - novaA : novaA - novaB;
 
   });
 
