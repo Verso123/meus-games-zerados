@@ -113,9 +113,16 @@
 <button onclick="ordenarAlfabetico()">🔤 A–Z</button>
 <button onclick="ordenarPorNota()">⭐ Nota</button>
 <button onclick="ordenarPlatinas()">🏆 Platina</button>
-<button onclick="ordenarHoras()">⏱ Horas</button>
-<button onclick="ordenarData()">📅 Data</button>
-
+  
+<select id="ordemHoras" onchange="ordenarHoras()">
+<option value="maior">Maior → Menor</option>
+<option value="menor">Menor → Maior</option>
+</select>
+ 
+<select id="ordemData" onchange="ordenarData()">
+<option value="recente">Mais recente</option>
+<option value="antigo">Mais antigo</option>
+</select>
 
 <select onchange="filtrarPlataforma(this.value)">
 <option value="todas">🎮 Plataforma</option>
