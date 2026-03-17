@@ -796,6 +796,8 @@ function ordenar(funcao) {
 } //horas de gameplay
 function ordenarHoras() {
 
+  const ordem = document.getElementById("ordemHoras").value;
+
   ordenar((a, b) => {
 
     function pegarHoras(valor) {
@@ -816,14 +818,21 @@ function ordenarHoras() {
     const hA = pegarHoras(a.cells[4].innerText);
     const hB = pegarHoras(b.cells[4].innerText);
 
-    return hB - hA; // maior primeiro
+    if (ordem === "maior") {
+      return hB - hA;
+    } else {
+      return hA - hB;
+    }
 
   });
 
 }
 
+
   //Data
   function ordenarData() {
+
+  const ordem = document.getElementById("ordemData").value;
 
   ordenar((a, b) => {
 
@@ -833,11 +842,16 @@ function ordenarHoras() {
     const novaA = new Date(dataA[2], dataA[1] - 1, dataA[0]);
     const novaB = new Date(dataB[2], dataB[1] - 1, dataB[0]);
 
-    return novaB - novaA; // mais recente primeiro
+    if (ordem === "recente") {
+      return novaB - novaA;
+    } else {
+      return novaA - novaB;
+    }
 
   });
 
 }
+
 
 
 // contar jogos zerados
