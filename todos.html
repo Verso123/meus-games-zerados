@@ -825,14 +825,18 @@ function ordenarHoras() {
 
   ordenar((a, b) => {
 
-    const dataA = a.cells[7].innerText.split("/").reverse().join("-");
-    const dataB = b.cells[7].innerText.split("/").reverse().join("-");
+    const dataA = a.cells[7].innerText.split("/");
+    const dataB = b.cells[7].innerText.split("/");
 
-    return new Date(dataB) - new Date(dataA);
+    const novaA = new Date(dataA[2], dataA[1] - 1, dataA[0]);
+    const novaB = new Date(dataB[2], dataB[1] - 1, dataB[0]);
+
+    return novaB - novaA; // mais recente primeiro
 
   });
 
 }
+
 
 // contar jogos zerados
   function contarJogos() {
