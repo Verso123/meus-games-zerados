@@ -113,7 +113,21 @@
     <option value="curto">Até 10h</option>
     <option value="medio">10h - 40h</option>
     <option value="longo">40h+</option>
+  </select 
+    
+  <select onchange="filtrarData(this.value)">
+    <option value="todas">📅 Data</option>
+    <option value="2026">2026</option>
+    <option value="2025">2025</option>
+    <option value="2024">2024</option>
+    <option value="2023">2023</option>
+    <option value="2022">2022</option>
+    <option value="2021">2021</option>
+    <option value="2020">2020</option>
+    <option value="2019">2019</option>
+    <option value="2018">2018</option>
   </select>
+
 
   <input type="date" onchange="filtrarData(this.value)"> 
   
@@ -720,10 +734,6 @@ const reviews = {
   tr.parentNode.insertBefore(trComentario, tr.nextSibling);
 }
 
-/* ===============================
-   FUNÇÕES DE ORDENAÇÃO
-================================ */
-
 // A–Z
 function ordenarAlfabetico() {
   ordenar((a, b) =>
@@ -731,7 +741,7 @@ function ordenarAlfabetico() {
   );
 }
 
-// ⭐ NOTA (corrigido índice + vírgula)
+// ⭐ NOTA 
 function ordenarPorNota() {
   ordenar((a, b) => {
     const notaA = parseFloat(a.cells[6].innerText.replace(',', '.')) || 0;
@@ -740,7 +750,7 @@ function ordenarPorNota() {
   });
 }
 
-// 🏆 PLATINA (corrigido índice)
+// 🏆 PLATINA 
 function ordenarPlatinas() {
   ordenar((a, b) => {
     const platA = a.cells[8].innerText.trim();
@@ -748,7 +758,7 @@ function ordenarPlatinas() {
     return platB.length - platA.length;
   });
 }
-
+//ordenação comentario 
 function ordenar(funcao) {
   const table = document.getElementById("tabelaJogos");
   const rows = Array.from(table.rows)
@@ -758,6 +768,7 @@ function ordenar(funcao) {
   rows.sort(funcao);
   rows.forEach(row => table.appendChild(row));
 } 
+  //plataforma
   function filtrarPlataforma(plataforma) {
 
   const linhas = document.querySelectorAll("#tabelaJogos tr");
@@ -776,7 +787,7 @@ function ordenar(funcao) {
 
   });
 
-} 
+} //horas de gameplay
   function filtrarHoras(tipo) {
 
   const linhas = document.querySelectorAll("#tabelaJogos tr");
@@ -808,7 +819,8 @@ function ordenar(funcao) {
   });
 
 } 
-  function filtrarData(dataSelecionada) {
+  //Data
+  function filtrarData(ano) {
 
   const linhas = document.querySelectorAll("#tabelaJogos tr");
 
@@ -816,26 +828,18 @@ function ordenar(funcao) {
 
     if (i === 0 || linha.classList.contains("comentario")) return;
 
-    const dataTabela = linha.cells[7].innerText;
+    const data = linha.cells[7].innerText;
 
-    const partes = dataTabela.split("/");
-
-    const dataFormatada =
-      partes[2] + "-" + partes[1] + "-" + partes[0];
-
-    if (dataSelecionada === "" || dataSelecionada === dataFormatada) {
-
+    if (ano === "todas" || data.includes(ano)) {
       linha.style.display = "";
-
     } else {
-
       linha.style.display = "none";
-
     }
 
   });
 
-} 
+}
+
   function contarJogos() {
 
   const linhas = document.querySelectorAll("#tabelaJogos tr");
