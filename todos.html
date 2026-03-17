@@ -90,10 +90,29 @@
 
 <div class="acoes">
   <a href="index.html">⬅ Voltar</a>
+
   <button onclick="ordenarAlfabetico()">🔤 A–Z</button>
   <button onclick="ordenarPorNota()">⭐ Nota</button>
   <button onclick="ordenarPlatinas()">🏆 Platina</button>
+
+  <select onchange="filtrarPlataforma(this.value)">
+    <option value="todas">🎮 Plataforma</option>
+    <option value="PC">PC</option>
+    <option value="PS4">PS4</option>
+    <option value="PS3">PS3</option>
+    <option value="Xbox">Xbox</option>
+  </select>
+
+  <select onchange="filtrarHoras(this.value)">
+    <option value="todas">⏱ Horas</option>
+    <option value="curto">Até 10h</option>
+    <option value="medio">10h - 40h</option>
+    <option value="longo">40h+</option>
+  </select>
+
+  <input type="date" onchange="filtrarData(this.value)">
 </div>
+
 
 <table id="tabelaJogos">
 <tr>
@@ -724,9 +743,6 @@ function ordenarPlatinas() {
   });
 }
 
-/* ===============================
-   FUNÇÃO BASE
-================================ */
 function ordenar(funcao) {
   const table = document.getElementById("tabelaJogos");
   const rows = Array.from(table.rows)
@@ -735,7 +751,88 @@ function ordenar(funcao) {
 
   rows.sort(funcao);
   rows.forEach(row => table.appendChild(row));
+} 
+  function filtrarPlataforma(plataforma) {
+
+  const linhas = document.querySelectorAll("#tabelaJogos tr");
+
+  linhas.forEach((linha, i) => {
+
+    if (i === 0 || linha.classList.contains("comentario")) return;
+
+    const valor = linha.cells[3].innerText;
+
+    if (plataforma === "todas" || valor.includes(plataforma)) {
+      linha.style.display = "";
+    } else {
+      linha.style.display = "none";
+    }
+
+  });
+
+} 
+  function filtrarHoras(tipo) {
+
+  const linhas = document.querySelectorAll("#tabelaJogos tr");
+
+  linhas.forEach((linha, i) => {
+
+    if (i === 0 || linha.classList.contains("comentario")) return;
+
+    let horas = linha.cells[4].innerText
+      .replace("H", "")
+      .replace(",", ".")
+      .replace("m", "");
+
+    horas = parseFloat(horas);
+
+    if (tipo === "todas") linha.style.display = "";
+
+    else if (tipo === "curto" && horas <= 10)
+      linha.style.display = "";
+
+    else if (tipo === "medio" && horas > 10 && horas <= 40)
+      linha.style.display = "";
+
+    else if (tipo === "longo" && horas > 40)
+      linha.style.display = "";
+
+    else linha.style.display = "none";
+
+  });
+
+} 
+  function filtrarData(dataSelecionada) {
+
+  const linhas = document.querySelectorAll("#tabelaJogos tr");
+
+  linhas.forEach((linha, i) => {
+
+    if (i === 0 || linha.classList.contains("comentario")) return;
+
+    const dataTabela = linha.cells[7].innerText;
+
+    const partes = dataTabela.split("/");
+
+    const dataFormatada =
+      partes[2] + "-" + partes[1] + "-" + partes[0];
+
+    if (dataSelecionada === "" || dataSelecionada === dataFormatada) {
+
+      linha.style.display = "";
+
+    } else {
+
+      linha.style.display = "none";
+
+    }
+
+  });
+
 }
+
+
+
 </script>
 
 </body>
