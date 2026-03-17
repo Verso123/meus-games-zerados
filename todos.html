@@ -23,7 +23,50 @@
 
   .acoes {
     margin: 20px;
-  }
+  } 
+  .acoes {
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* BOTÕES */
+.acoes a,
+.acoes button {
+  background: #1b1b1b;
+  color: white;
+  border: 1px solid #444;
+  padding: 7px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.acoes button:hover,
+.acoes a:hover {
+  background: #2a2a2a;
+}
+
+/* SELECT */
+.acoes select {
+  background: #1b1b1b;
+  color: white;
+  border: 1px solid #444;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* DATA */
+.acoes input[type="date"] {
+  background: #1b1b1b;
+  color: white;
+  border: 1px solid #444;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
 
   .acoes a,
   .acoes button {
@@ -87,50 +130,47 @@
 <body>
 
 <header>Todos os jogos</header>
-  
-  <div id="contadorJogos" style="margin:20px; font-size:18px;">
+
+<div id="contadorJogos" style="margin:20px; font-size:18px;">
 🎮 Jogos Zerados: 0
 </div>
 
-
 <div class="acoes">
-  <a href="index.html">⬅ Voltar</a>
 
-  <button onclick="ordenarAlfabetico()">🔤 A–Z</button>
-  <button onclick="ordenarPorNota()">⭐ Nota</button>
-  <button onclick="ordenarPlatinas()">🏆 Platina</button>
+<a href="index.html">⬅ Voltar</a>
 
-  <select onchange="filtrarPlataforma(this.value)">
-    <option value="todas">🎮 Plataforma</option>
-    <option value="PC">PC</option>
-    <option value="PS4">PS4</option>
-    <option value="PS3">PS3</option>
-    <option value="Xbox">Xbox</option>
-  </select>
+<button onclick="ordenarAlfabetico()">🔤 A–Z</button>
+<button onclick="ordenarPorNota()">⭐ Nota</button>
+<button onclick="ordenarPlatinas()">🏆 Platina</button>
 
-  <select onchange="filtrarHoras(this.value)">
-    <option value="todas">⏱ Horas</option>
-    <option value="curto">Até 10h</option>
-    <option value="medio">10h - 40h</option>
-    <option value="longo">40h+</option>
-  </select 
-    
-  <select onchange="filtrarData(this.value)">
-    <option value="todas">📅 Data</option>
-    <option value="2026">2026</option>
-    <option value="2025">2025</option>
-    <option value="2024">2024</option>
-    <option value="2023">2023</option>
-    <option value="2022">2022</option>
-    <option value="2021">2021</option>
-    <option value="2020">2020</option>
-    <option value="2019">2019</option>
-    <option value="2018">2018</option>
-  </select>
+<select onchange="filtrarPlataforma(this.value)">
+<option value="todas">🎮 Plataforma</option>
+<option value="PC">PC</option>
+<option value="PS4">PS4</option>
+<option value="PS3">PS3</option>
+<option value="Xbox">Xbox</option>
+</select>
 
+<select onchange="filtrarHoras(this.value)">
+<option value="todas">⏱ Horas</option>
+<option value="curto">Até 10h</option>
+<option value="medio">10h - 40h</option>
+<option value="longo">40h+</option>
+</select>
 
-  <input type="date" onchange="filtrarData(this.value)"> 
-  
+<select onchange="filtrarData(this.value)">
+<option value="todas">📅 Ano</option>
+<option value="2026">2026</option>
+<option value="2025">2025</option>
+<option value="2024">2024</option>
+<option value="2023">2023</option>
+<option value="2022">2022</option>
+<option value="2021">2021</option>
+<option value="2020">2020</option>
+<option value="2019">2019</option>
+<option value="2018">2018</option>
+</select>
+
 </div>
 
 
