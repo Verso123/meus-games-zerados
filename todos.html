@@ -116,17 +116,19 @@
   
 
 
-<button onclick="toggleHoras()">⏱ Horas</button>
-<div id="menuHoras" style="display:none;">
-  <button onclick="ordenarHoras('maior')">Maior → Menor</button>
-  <button onclick="ordenarHoras('menor')">Menor → Maior</button>
-</div>
+<select onchange="ordenarHoras(this.value)">
+<option value="">⏱ Horas</option>
+<option value="maior">Maior → Menor</option>
+<option value="menor">Menor → Maior</option>
+</select>
 
-<button onclick="toggleData()">📅 Data</button>
-<div id="menuData" style="display:none;">
-  <button onclick="ordenarData('recente')">Mais recente</button>
-  <button onclick="ordenarData('antigo')">Mais antigo</button>
-</div>
+
+<select onchange="ordenarData(this.value)">
+<option value="">📅 Data</option>
+<option value="recente">Mais recente</option>
+<option value="antigo">Mais antigo</option>
+</select>
+
 
 
 <select onchange="filtrarPlataforma(this.value)">
@@ -794,16 +796,16 @@ function ordenar(funcao) {
   });
 
 } //horas de gameplay
-function ordenarHoras(ordem) {
+function ordenarHoras(ordem){
 
-  ordenar((a, b) => {
+  ordenar((a,b)=>{
 
-    function pegarHoras(valor) {
+    function pegarHoras(valor){
 
       valor = valor.toLowerCase();
 
-      if (valor.includes("m")) {
-        return parseFloat(valor.replace("m","")) / 60;
+      if(valor.includes("m")){
+        return parseFloat(valor.replace("m",""))/60;
       }
 
       valor = valor.replace("h","")
@@ -816,11 +818,14 @@ function ordenarHoras(ordem) {
     const hA = pegarHoras(a.cells[4].innerText);
     const hB = pegarHoras(b.cells[4].innerText);
 
-    return ordem === "maior" ? hB - hA : hA - hB;
+    return ordem === "maior" ? hB-hA : hA-hB;
 
   });
 
 }
+ 
+
+//data
 
 
 function toggleHoras() {
@@ -840,17 +845,17 @@ function toggleData() {
 
 
   //Data
-  function ordenarData(ordem) {
+  function ordenarData(ordem){
 
-  ordenar((a, b) => {
+  ordenar((a,b)=>{
 
     const dataA = a.cells[7].innerText.split("/");
     const dataB = b.cells[7].innerText.split("/");
 
-    const novaA = new Date(dataA[2], dataA[1]-1, dataA[0]);
-    const novaB = new Date(dataB[2], dataB[1]-1, dataB[0]);
+    const novaA = new Date(dataA[2],dataA[1]-1,dataA[0]);
+    const novaB = new Date(dataB[2],dataB[1]-1,dataB[0]);
 
-    return ordem === "recente" ? novaB - novaA : novaA - novaB;
+    return ordem === "recente" ? novaB-novaA : novaA-novaB;
 
   });
 
