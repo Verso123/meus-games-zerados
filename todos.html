@@ -22,18 +22,16 @@
   }
 
   .acoes {
-    margin: 20px;
-  } 
-  .acoes {
   margin: 20px;
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-/* BOTÕES */
+/* TODOS OS BOTÕES E SELECT */
 .acoes a,
-.acoes button {
+.acoes button,
+.acoes select {
   background: #1b1b1b;
   color: white;
   border: 1px solid #444;
@@ -41,48 +39,21 @@
   border-radius: 6px;
   cursor: pointer;
   text-decoration: none;
+  font-size: 14px;
 }
 
+/* HOVER */
+.acoes a:hover,
 .acoes button:hover,
-.acoes a:hover {
+.acoes select:hover {
   background: #2a2a2a;
 }
 
-/* SELECT */
+/* remove estilo padrão do select */
 .acoes select {
-  background: #1b1b1b;
-  color: white;
-  border: 1px solid #444;
-  padding: 6px 10px;
-  border-radius: 6px;
-  cursor: pointer;
+  appearance: none;
 }
 
-/* DATA */
-.acoes input[type="date"] {
-  background: #1b1b1b;
-  color: white;
-  border: 1px solid #444;
-  padding: 6px 10px;
-  border-radius: 6px;
-}
-
-
-  .acoes a,
-  .acoes button {
-    background: #222;
-    color: white;
-    border: 1px solid #555;
-    padding: 8px 14px;
-    margin-right: 8px;
-    cursor: pointer;
-    border-radius: 6px;
-  }
-
-  .acoes button:hover,
-  .acoes a:hover {
-    background: #333;
-  }
 
   table {
     width: 95%;
